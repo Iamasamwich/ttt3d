@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  margin: 0 auto;
+  width: 768px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heading {
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 4em;
+}
+
+h2 {
+  margin: 0;
+  font-size: 3em;
+}
+
+.status {
+  text-align: center;
+}
+
+.panels {
+  display: flex;
+  flex-direction: row;
+  height: 768px;
+}
+
+.panel {
+  height: 500px;
+}
+
+.score {
+  background-color: cadetblue;
+  width: 20%;
+}
+
+.board {
+  width: 60%;
+  background-color: darkviolet;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.layer {
+  width: 240px;
+  height: 240px;
+  background-color: forestgreen;
+  margin: 8px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+}
+
+.square {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
