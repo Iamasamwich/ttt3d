@@ -14,7 +14,9 @@ const Square = ({layerNum, rowNum, squareNum, square, squareClicked}) => {
     <div 
       className='square'
       onClick={handleClick}>
-      {square}
+        <h5>
+          {square}
+        </h5>
     </div>
   )
 };

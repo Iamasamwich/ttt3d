@@ -5,53 +5,79 @@ import Panels from './Panels';
 import Status from './Status';
 
 import checkWinner from '../logic/checkWinner';
+import resetBoard from '../logic/resetBoard';
 
 const App = () => {
 
   const [board, setBoard] = useState([
     [ 
-      ['x', 't', 'c'],
-      ['a', 'g', 'f'],
-      ['h', 'f', 'b']
+      [null, null, null],
+      [null, null, null],
+      [null, null, null],
     ], [
-      ['u', 'g', 'u'],
-      ['t', 'u', 'c'],
-      ['j', 'b', 'x']
+      [null, null, null],
+      [null, null, null],
+      [null, null, null],
     ], [
-      ['g', 'q', 'x'],
-      ['210', 'a', 1],
-      ['a', 'z', 'c']
+      [null, null, null],
+      [null, null, null],
+      [null, null, null],
     ]
   ]);
-  const [whoseTurn, setWhoseTurn] = useState('X');
-  const [whoWentFirst, setWhoWentFirst] = useState('X');
-  const [turnCount, setTurnCount] = useState(0);
+  const [whoseTurn, setWhoseTurn] = useState('');
+  const [whoWentFirst, setWhoWentFirst] = useState('');
   const [score, setScore] = useState([0,0]);
   const [winner, setWinner] = useState(null);
-  const [loadShown, setLoadShown] = useState(false);
+  // const [loadShown, setLoadShown] = useState(false);
 
   useEffect(() => {
-    console.log('board useEffect, checking winner');
     const result = checkWinner(board);
-    console.log('useEffect board result', result);
-  }, [board])
+    if (result) {
+      const newScore = JSON.parse(JSON.stringify(score));
+      if (result === 'X') {
+        newScore[0] ++;
+      } else {
+        newScore[1] ++;
+      };
+      setScore(newScore);
+      setWinner(result);
+    };
+    if (whoseTurn === '') {
+      setWhoseTurn('X');
+    } else if (whoseTurn === 'X' && !winner) {
+      setWhoseTurn('O');
+    } else if (whoseTurn === 'O' && !winner) {
+      setWhoseTurn('X')
+    };
+
+    if (winner) {
+      setWinner(null);
+    };
+
+  }, [board]);
+
 
   const handleSquareClick = (square) => {
+    if (winner) return;
     const l = square[0];
     const r = square[1];
     const s = square[2];
     // const newBoard = [...board]; // this isn't creating an immutable copy, so it's done the JSON parse stringify way...
     const newBoard = JSON.parse(JSON.stringify(board));
     newBoard[l][r][s] = whoseTurn;
-    console.log('setting new board');
     setBoard(newBoard);
-    // whoseTurn === 'X' ?
-    //   setWhoseTurn('Y') :
-    //   setWhoseTurn('X')
+  };
+
+  const handleAppClick = (e) => {
+    if (winner) {
+      setBoard(resetBoard);
+    };
   };
 
   return (
-    <div className='app'>
+    <div className='app'
+      onClick={handleAppClick}
+    >
       <div className='heading'>
         <h1>3D TIC TAC TOE</h1>
       </div>
