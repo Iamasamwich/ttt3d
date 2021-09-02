@@ -74,6 +74,11 @@ const App = () => {
     };
   };
 
+  const handleReset = (e) => {
+    setBoard(resetBoard);
+    setScore([0,0]);
+  }
+
   return (
     <div className='app'
       onClick={handleAppClick}
@@ -82,7 +87,7 @@ const App = () => {
         <h1>3D TIC TAC TOE</h1>
       </div>
       <Status whoseTurn={whoseTurn} winner={winner} />
-      <Panels board={board} score={score} squareClicked={handleSquareClick} />
+      <Panels board={board} score={score} winner={winner} squareClicked={handleSquareClick} reset={handleReset} />
 
     </div>
   )
