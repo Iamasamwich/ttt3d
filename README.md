@@ -1,4 +1,4 @@
-# 3D Tic Tac Toe
+# Tic Tac Toe 3D
 
 ## Credits
 

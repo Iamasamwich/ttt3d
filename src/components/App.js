@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import '../style/style.css';
 import Panels from './Panels';
 import Status from './Status';
+import HowTo from './HowTo';
 
 import checkWinner from '../logic/checkWinner';
 import resetBoard from '../logic/resetBoard';
@@ -25,10 +26,9 @@ const App = () => {
     ]
   ]);
   const [whoseTurn, setWhoseTurn] = useState('');
-  const [whoWentFirst, setWhoWentFirst] = useState('');
   const [score, setScore] = useState([0,0]);
   const [winner, setWinner] = useState(null);
-  // const [loadShown, setLoadShown] = useState(false);
+  const [howToShown, setHowToShown] = useState(false);
 
   useEffect(() => {
     const result = checkWinner(board);
@@ -79,16 +79,25 @@ const App = () => {
     setScore([0,0]);
   }
 
+  const handleHowToClicked = () => {
+    setHowToShown(true);
+  };
+
   return (
     <div className='app'
       onClick={handleAppClick}
     >
       <div className='heading'>
-        <h1>3D TIC TAC TOE</h1>
+        <h1>TIC TAC TOE 3D</h1>
       </div>
-      <Status whoseTurn={whoseTurn} winner={winner} />
-      <Panels board={board} score={score} winner={winner} squareClicked={handleSquareClick} reset={handleReset} />
-
+      {howToShown ?
+      <>
+        <Status whoseTurn={whoseTurn} winner={winner} />
+        <Panels board={board} score={score} winner={winner} squareClicked={handleSquareClick} reset={handleReset} />
+      </>
+        :
+        <HowTo handleHowToClicked={handleHowToClicked} />
+      }
     </div>
   )
 };

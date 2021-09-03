@@ -13,7 +13,7 @@ const Panels = ({board, squareClicked, score, reset, winner}) => {
           :
           null
         }
-        <h3>X: {score[0]}</h3>
+        <h3>X:</h3> <h3>{score[0]}</h3>
         <button 
           className='reset'
           onClick={reset}>
@@ -22,7 +22,7 @@ const Panels = ({board, squareClicked, score, reset, winner}) => {
       </div>
       <Board board={board} squareClicked={squareClicked} />
       <div className='score'>
-        <h3>O: {score[1]}</h3>
+        <h3>O:</h3><h3>{score[1]}</h3>
       </div>
     </div>
   );
