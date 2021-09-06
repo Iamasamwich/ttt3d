@@ -91,12 +91,12 @@ const App = () => {
         <h1>TIC TAC TOE 3D</h1>
       </div>
       {howToShown ?
-      <>
-        <Status whoseTurn={whoseTurn} winner={winner} />
-        <Panels board={board} score={score} winner={winner} squareClicked={handleSquareClick} reset={handleReset} />
-      </>
+        <>
+          <Status whoseTurn={whoseTurn} winner={winner} />
+          <Panels board={board} score={score} winner={winner} squareClicked={handleSquareClick} reset={handleReset} />
+        </>
         :
-        <HowTo handleHowToClicked={handleHowToClicked} />
+      <HowTo handleHowToClicked={handleHowToClicked} />
       }
     </div>
   )

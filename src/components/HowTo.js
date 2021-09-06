@@ -1,31 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import Board from './Board';
+import resetBoard from '../logic/resetBoard';
 
 const HowTo = ({handleHowToClicked}) => {
 
   const [board, setBoard] = useState([]);
   const [count, setCount] = useState(0);
 
-
   const x = 'X';
-  const emptyBoard = [
-    [ 
-      [null, null, null],
-      [null, null, null],
-      [null, null, null],
-    ], [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null],
-    ], [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null],
-    ]
-  ];
 
   useEffect(() => {
-    setBoard(emptyBoard);
+    setBoard(resetBoard);
   }, []);
 
   useEffect(() => {
@@ -39,7 +24,7 @@ const HowTo = ({handleHowToClicked}) => {
 
   useEffect(() => {
     const cycle = count % 7;
-    const newBoard = JSON.parse(JSON.stringify(emptyBoard));
+    const newBoard = JSON.parse(JSON.stringify(resetBoard()));
     switch (cycle) {
       case 0: //across one layer
         newBoard[0][0] = [x,x,x];
