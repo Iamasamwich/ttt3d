@@ -38,4 +38,4 @@ Note: These instructions are written for use in a unix-like terminal using Git..
 
 ## Todo
 
-* Responsive styling on How To page
+* <s>Responsive styling on How To page</s>

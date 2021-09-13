@@ -238,4 +238,9 @@ p {
   .reset-advice {
     display: none;
   }
+
+  .howTo {
+    grid-column: 1/span 2;
+    margin: 0 10px;
+  }
 }
