@@ -38,4 +38,5 @@ Note: These instructions are written for use in a unix-like terminal using Git..
 
 ## Todo
 
+* Update favicons for proper icons
 * <s>Responsive styling on How To page</s>
